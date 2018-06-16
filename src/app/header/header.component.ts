@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { DataStorageService } from "../shared/data-storage.service";
 import { Response } from "@angular/http";
+import { Observable } from "rxjs";
 
 @Component({
     selector: "app-header",
@@ -13,10 +14,14 @@ export class HeaderComponent{
 
     onSaveData(){
         console.log('in on save data');
-        this.dataStorageService.storeRecipes().subscribe(
-            (response: Response) => {
-                console.log(response);
-                
+        this.dataStorageService.storeRecipes().then(
+            (obs: Observable<Response>) => {
+                obs.subscribe(
+                    (response: Response) => {
+                        console.log(response);
+                        
+                    }
+                )
             }
         )
     }

@@ -17,4 +17,8 @@ export class AuthService {
                 error => console.log(error)
             );
     }
+
+    getToken() {
+        return firebase.auth().currentUser.getIdToken();
+    }
 }
