@@ -12,17 +12,12 @@ import { Store } from '@ngrx/store';
 export class ShoppingListComponent implements OnInit {
   shoppingListState: Observable<{ingredients: Ingredient[]}>;
 
-  constructor(private shoppingListService: ShoppingListService, private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) { }
+  constructor(
+    private shoppingListService: ShoppingListService, 
+    private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) { }
 
   ngOnInit() {
     this.shoppingListState = this.store.select('shoppingList');
-
-    // this.subscription = this.shoppingListService.ingredientChanged.subscribe(
-    //   (ingredients: Ingredient[]) => {
-    //     this.ingredients = ingredients;
-
-    //   }
-    // );
   }
 
   onEditItem(index: number){
